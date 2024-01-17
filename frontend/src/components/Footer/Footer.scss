@@ -1,0 +1,15 @@
+.footer {
+  height: 50px;
+  padding: 0 20px;
+  border-top: 1px solid #dddddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  > p {
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 12px;
+    font-weight: bold;
+  }
+}

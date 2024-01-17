@@ -1,0 +1,16 @@
+.articleTeaser {
+  > h3 {
+    font-size: 28px;
+    margin-top: 30px;
+    text-align: center;
+
+    > a {
+      color: #002c9a;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
