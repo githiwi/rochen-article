@@ -1,4 +1,4 @@
-import './HomePage.css'
+import './HomePage.scss'
 import {useEffect, useState} from "react";
 import ArticleService from "../../services/ArticleService.js";
 import ArticleTeaser from "../../components/ArticleTeaser/ArticleTeaser.jsx";
@@ -28,7 +28,7 @@ export default function HomePage() {
 
     return (
         <article className="homePage">
-            <h2>home.</h2>;
+            <h2>home</h2>
             {articleTeasers && articleTeasers.map((teaser, index) => (
                 <ArticleTeaser
                     key={teaser.id}

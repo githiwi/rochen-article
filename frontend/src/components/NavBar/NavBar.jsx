@@ -11,7 +11,7 @@ export default function NavBar() {
             </figure>
             <ul>
                 <li>
-                    <NavLink to='/home' className={({isActive}) =>
+                    <NavLink to='/' className={({isActive}) =>
                         isActive ? "active" : ""
                     }>Home</NavLink>
                 </li>
