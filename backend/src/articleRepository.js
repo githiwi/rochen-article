@@ -26,7 +26,8 @@ class ArticleRepository {
             const article = {
                 id: result.id,
                 title: result.title,
-                content: result.content
+                content: result.content,
+                comments:result.comments
             }
     
             return article

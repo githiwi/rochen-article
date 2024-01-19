@@ -2,6 +2,7 @@ import './ArticleDetailPage.scss'
 import ArticleService from "../../services/ArticleService.js";
 import {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
+import Comment from '../../components/Comment/Comment.jsx';
 
 export default function ArticleDetailPage() {
 
@@ -29,6 +30,7 @@ export default function ArticleDetailPage() {
     }
 
     return (
+        <>
         <article className="articleDetailsPage">
             {articleDetails && (
                 <>
@@ -38,6 +40,10 @@ export default function ArticleDetailPage() {
             )}
             {showLoader && <p>Loading...</p>}
             {errorMessage && <p>{errorMessage}</p>}
+            
         </article>
+
+        <Comment articleId={articleId}/>
+       </>
     )
 }
