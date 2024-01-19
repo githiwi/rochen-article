@@ -54,5 +54,18 @@ import CommentRepository from './commentRepository.js'
         }
     })
 
+    app.get('/articles/comment', async (request, response) => {
+        
+        const aricleComments = await CommentRepository.getCommentbyArticle()
+
+        if(aricleComments) {
+            response.json(aricleComments) 
+        } else {
+            response.sendStatus(404)
+        }
+
+    })
+
+
 })()
 

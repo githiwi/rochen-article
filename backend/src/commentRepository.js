@@ -59,15 +59,23 @@ class CommentRepository {
         
     }
 
-    // async getCommentbyArticle(){
+    async getCommentbyArticle() {
 
-    //     const database = DatabaseConnection.getDatabase()
-    //     const result = await database.get('SELECT * FROM comments')
+        const database = DatabaseConnection.getDatabase()
+        const result = await database.get('SELECT * FROM comments')
 
-    //     const comments = result.map(row =>({
-            
-    //     }))
-    // }
+        if(result){
+            const aricleComments = result.map(row =>({
+                id: row.id,
+                article_id: row.article_id,
+                content: row.comment
+            }))
+            return aricleComments
+        }else{
+            return null
+        }
+        
+    }
 
 }
 
