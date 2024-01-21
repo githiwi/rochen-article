@@ -24,7 +24,8 @@ class ArticleRepository {
         if(fetchedArticle) {
             const comments = articleComments.map(row => ({
                 id: row.id,
-                content: row.content
+                content: row.content,
+                username: row.username
             }))
 
             const article = {

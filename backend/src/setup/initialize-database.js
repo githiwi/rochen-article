@@ -64,6 +64,7 @@ function createCommentsTable() {
             id INT PRIMARY KEY,
             article_id INT NOT NULL,
             content TEXT NOT NULL,
+            username TEXT NOT NULL,
 
             FOREIGN KEY(article_id) REFERENCES articles(id)
         )
