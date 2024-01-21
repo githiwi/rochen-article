@@ -10,19 +10,15 @@ export default function Comment({articleId, refereshArticlePage}) {
   const handleSubmitComment = async (e)=> {
           e.preventDefault();
 
-          if (!comment.trim()) {
-            // If the comment is empty or contains only whitespace, don't submit
-            return;
-          }
-
           const commentData = {
               articleId,
               comment,
           }
           
           try {
-              const comment = await CommentService.createArticleComment(commentData)
-              console.log("Comment created successfully", comment)
+              await CommentService.createArticleComment(commentData)
+              console.info("Comment created successfuly ")
+              
               refereshArticlePage()
               setComment("")
           } catch (error) {

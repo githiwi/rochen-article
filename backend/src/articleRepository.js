@@ -1,6 +1,5 @@
 import DatabaseConnection from './DatabaseConnection.js'
 
-
 class ArticleRepository {
 
     async getArticleTeasers() {
@@ -23,13 +22,10 @@ class ArticleRepository {
         const articleComments = await database.all('SELECT * FROM comments WHERE article_id = ?', [id])
 
         if(fetchedArticle) {
-           // console.log("articleComments=>", articleComments)
             const comments = articleComments.map(row => ({
                 id: row.id,
                 content: row.content
             }))
-
-            //console.log("comments=>", comments)
 
             const article = {
                 id: fetchedArticle.id,
@@ -37,8 +33,6 @@ class ArticleRepository {
                 content: fetchedArticle.content,
                 comments: comments
             }
-    
-            console.log("artcile=>", article)
 
             return article
 

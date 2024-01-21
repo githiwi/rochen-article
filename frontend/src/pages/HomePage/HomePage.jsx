@@ -28,7 +28,7 @@ export default function HomePage() {
 
     return (
         <article className="homePage">
-            <h2>home</h2>
+            <h2>Home</h2>
             {articleTeasers && articleTeasers.map((teaser, index) => (
                 <ArticleTeaser
                     key={teaser.id}

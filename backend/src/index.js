@@ -42,30 +42,17 @@ import CommentRepository from './commentRepository.js'
 
     })
 
-    app.post('/articles/comment', async (request,response)=> {
+    app.post('/articles/comment', async (request, response)=> {
         const commentData =  request.body
         
         const comment = await CommentRepository.createCommentArticle(commentData)
         
         if (comment) {
-            response.json("comment created succefully")
+            response.json("Comment created succefully")
         } else {
             response.sendStatus(400)
         }
     })
-
-    app.get('/articles/comment', async (request, response) => {
-        
-        const aricleComments = await CommentRepository.getCommentbyArticle()
-
-        if(aricleComments) {
-            response.json(aricleComments) 
-        } else {
-            response.sendStatus(404)
-        }
-
-    })
-
 
 })()
 
