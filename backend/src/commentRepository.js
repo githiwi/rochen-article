@@ -21,8 +21,8 @@ class CommentRepository {
             commentId = allComments.length
         }
 
-        const query = 'INSERT INTO comments (id, article_id, content) VALUES(?, ?, ?)'
-        const values = [commentId, commentData.articleId, commentData.comment]
+        const query = 'INSERT INTO comments (id, article_id, content, username) VALUES(?, ?, ?, ?)'
+        const values = [commentId, commentData.articleId, commentData.comment, commentData.username]
         
         try {
             const result = await dbConnection.run(query, values)
