@@ -22,7 +22,7 @@ export default function ArticleDetailPage() {
         try {
             const articleDetails = await ArticleService.fetchArticleDetails(articleId)
             setArticleDetails(articleDetails)
-
+            console.log("check",articleDetails.comments.length)
             setErrorMessage(null)
         } catch (error) {
             setArticleDetails(null)
@@ -49,11 +49,12 @@ export default function ArticleDetailPage() {
             <section className='comment-section'>
                 
                     <div className='comment-box'>
+                <h3>{articleDetails?.comments?.length} Comments  </h3>
                         <Comment articleId={articleId} refereshArticlePage={fetchArticleDetails}/>    
                     </div>
                     
                     <div className='comments-list'>
-                        <h3> Comments  </h3>
+                       
                         {articleDetails?.comments.map((comment)=>(
                             <p>
                                 <CommentCard key={comment.id}  commentData={comment} />

@@ -1,13 +1,20 @@
 import React, { useState } from "react";
 import CommentService from "../../services/CommentService.js";
-
+import './comment.scss'
 
 export default function Comment({articleId, refereshArticlePage}) {
 
   const [comment, setComment]=useState("")
+  
 
   const handleSubmitComment = async (e)=> {
           e.preventDefault();
+
+          if (!comment.trim()) {
+            // If the comment is empty or contains only whitespace, don't submit
+            return;
+          }
+
           const commentData = {
               articleId,
               comment,
@@ -25,11 +32,11 @@ export default function Comment({articleId, refereshArticlePage}) {
 
   return(
     <div>
-        Comment
+       
         <form onSubmit={handleSubmitComment}>
             <textarea id="comment" value={comment} type="text" placeholder="write your comment" 
-                            onChange={(e)=>setComment(e.target.value)}/>
-            <button>Submit</button>
+                            onChange={(e)=>setComment(e.target.value)} />
+            <button type="submit" disabled={!comment.trim()}>Submit</button>
        </form>
       
      </div>
