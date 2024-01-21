@@ -1,7 +1,8 @@
-import express from 'express'
+import express, { json, request, response } from 'express'
 import cors from 'cors'
 import DatabaseConnection from './DatabaseConnection.js'
 import ArticleRepository from './articleRepository.js'
+import CommentRepository from './commentRepository.js'
 
 
 (async () => {
@@ -41,6 +42,17 @@ import ArticleRepository from './articleRepository.js'
 
     })
 
+    app.post('/articles/comment', async (request, response)=> {
+        const commentData =  request.body
+        
+        const comment = await CommentRepository.createCommentArticle(commentData)
+        
+        if (comment) {
+            response.json("Comment created succefully")
+        } else {
+            response.sendStatus(400)
+        }
+    })
 
 })()
 

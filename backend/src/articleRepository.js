@@ -1,6 +1,5 @@
 import DatabaseConnection from './DatabaseConnection.js'
 
-
 class ArticleRepository {
 
     async getArticleTeasers() {
@@ -19,16 +18,22 @@ class ArticleRepository {
     async getArticleById(id) {
 
         const database = DatabaseConnection.getDatabase()
-        const result = await database.get('SELECT * FROM articles WHERE id = ?', [id])
+        const fetchedArticle = await database.get('SELECT * FROM articles WHERE id = ?', [id])
+        const articleComments = await database.all('SELECT * FROM comments WHERE article_id = ?', [id])
 
-        if(result) {
+        if(fetchedArticle) {
+            const comments = articleComments.map(row => ({
+                id: row.id,
+                content: row.content
+            }))
 
             const article = {
-                id: result.id,
-                title: result.title,
-                content: result.content
+                id: fetchedArticle.id,
+                title: fetchedArticle.title,
+                content: fetchedArticle.content,
+                comments: comments
             }
-    
+
             return article
 
         } else {
