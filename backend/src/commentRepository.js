@@ -17,7 +17,7 @@ class CommentRepository {
         if(allComments.length === 0) {
             commentId = 0;
         } else {
-            //next id will be assigned with all comment length
+            //next id will be assigned with comments table length
             commentId = allComments.length
         }
 
