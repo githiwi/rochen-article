@@ -5,6 +5,7 @@ import NavBar from "./components/NavBar/NavBar.jsx";
 import Footer from "./components/Footer/Footer.jsx";
 import AboutPage from "./pages/AboutPage/AboutPage.jsx";
 import ArticleDetailPage from "./pages/ArticleDetailPage/ArticleDetailPage.jsx";
+import NoPageFound from './pages/NoPageFound/NoPageFound.jsx';
 
 function App() {
 
@@ -23,7 +24,11 @@ function App() {
                 {
                     path: "/about",
                     element: <AboutPage />,
-                }
+                },
+                {
+                    path: "*",
+                    element: <NoPageFound/>,
+                },
             ],
         },
     ])
