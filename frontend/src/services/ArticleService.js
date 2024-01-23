@@ -8,7 +8,16 @@ class ArticleService {
 
     fetchArticleDetails(articleId) {
         return fetch(`${this.API_URL}/articles/${articleId}`)
-            .then(response => response.json());
+            .then(response => {
+                if (response.ok) {
+                    return response.json()
+                } else {
+                    throw new Error('Article not found')
+                }
+            }).catch(error =>{
+                console.error("Error fetching article", error)
+                throw error
+            });
     }
 }
 

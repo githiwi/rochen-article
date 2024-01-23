@@ -12,13 +12,13 @@ form{
         resize: vertical;
       }
     
-       button {
+    >button {
         align-self: flex-end;
         padding: 10px ;
         background-color: #002c9a;
         color: #fff;
         border: none;
-        border-radius: 4px;
+        border-radius: 8px;
         cursor: pointer;
         
         &:disabled {
@@ -28,5 +28,11 @@ form{
           opacity: 0.7; 
         }
       }
+    
+    >input {
+      border-radius: 8px;
+      padding: 5px;
+      margin-bottom: 2px;
+    }
 }
 

@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import CommentService from "../../services/CommentService.js";
 import './comment.scss'
 
-export default function Comment({articleId, refereshArticlePage}) {
+export default function Comment({ articleId, refereshArticlePage }) {
 
-  const [comment, setComment]=useState("")
+  const [comment, setComment] = useState("")
+  const [username, setUsername] = useState("")
   
 
   const handleSubmitComment = async (e)=> {
@@ -13,6 +14,7 @@ export default function Comment({articleId, refereshArticlePage}) {
           const commentData = {
               articleId,
               comment,
+              username
           }
           
           try {
@@ -21,6 +23,7 @@ export default function Comment({articleId, refereshArticlePage}) {
               
               refereshArticlePage()
               setComment("")
+              setUsername("")
           } catch (error) {
               console.error("Erro creating comment", error)
           }
@@ -30,8 +33,14 @@ export default function Comment({articleId, refereshArticlePage}) {
     <div>
        
         <form onSubmit={handleSubmitComment}>
-            <textarea id="comment" value={comment} type="text" placeholder="write your comment" 
-                            onChange={(e)=>setComment(e.target.value)} />
+            <input id="username" value={username} type="text" 
+                   placeholder="Your username" required
+                   onChange={(e) => setUsername(e.target.value)} />
+
+            <textarea id="comment" value={comment} type="text" 
+                      placeholder="write your comment" 
+                      onChange={(e)=>setComment(e.target.value)} />
+
             <button type="submit" disabled={!comment.trim()}>Submit</button>
        </form>
       

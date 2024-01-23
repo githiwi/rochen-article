@@ -17,12 +17,12 @@ class CommentRepository {
         if(allComments.length === 0) {
             commentId = 0;
         } else {
-            //next id will be assigned with all comment length
+            //next id will be assigned with comments table length
             commentId = allComments.length
         }
 
-        const query = 'INSERT INTO comments (id, article_id, content) VALUES(?, ?, ?)'
-        const values = [commentId, commentData.articleId, commentData.comment]
+        const query = 'INSERT INTO comments (id, article_id, content, username) VALUES(?, ?, ?, ?)'
+        const values = [commentId, commentData.articleId, commentData.comment, commentData.username]
         
         try {
             const result = await dbConnection.run(query, values)
